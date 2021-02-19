@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateJenjangPendidikanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('role_name', 15);
-            $table->timestamps();
+        Schema::create('jenjang_pendidikan', function (Blueprint $table) {
+            $table->tinyIncrements('id');
+            $table->string('jenjang', 5);
         });
     }
 
@@ -27,6 +26,19 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('jenjang_pendidikan');
     }
 }
+
+/*
+paud (TK, Kelompok Bermain, Taman Penitipan Anak)
+sd
+slta (SMA)
+sltp (SMP)
+
+
+paud (RA)
+mi
+mts
+ma
+ */

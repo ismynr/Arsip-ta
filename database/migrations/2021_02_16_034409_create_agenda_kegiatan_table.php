@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOperatorDTable extends Migration
+class CreateAgendaKegiatanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateOperatorDTable extends Migration
      */
     public function up()
     {
-        Schema::create('operator_d', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('operator_w_id')->constrained('operator_w');
-            $table->string('name', 50);
+        Schema::create('agenda_kegiatan', function (Blueprint $table) {
+            $table->integerIncrements('id');
+            $table->string('nama_kegiatan', 150);
+            $table->string('tempat', 100);
+            $table->dateTime('tanggal_waktu');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateOperatorDTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operator_d');
+        Schema::dropIfExists('agenda_kegiatan');
     }
 }

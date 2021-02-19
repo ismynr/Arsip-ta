@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdminTable extends Migration
+class CreateProfileOrganisasiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateAdminTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
-            $table->tinyIncrements('id');
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('name', 10);
+        Schema::create('profile_organisasi', function (Blueprint $table) {
+            $table->unsignedSmallInteger('id');
+            $table->string('judul', 150);
+            $table->string('gambar_path', 100);
+            $table->text('isi');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateAdminTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('profile_organisasi');
     }
 }

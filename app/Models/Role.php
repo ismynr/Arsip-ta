@@ -6,10 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class Roles extends Model
+class Role extends Model
 {
     use HasFactory;
     
+    protected $table = "role";
+    
+    /**
+     * Admin, 
+     * Operator Daerah, 
+     * Operator Wilayah, 
+     * Anggota
+     * 
+     */
     protected $fillable = [
         'role_name',
     ];
@@ -20,6 +29,6 @@ class Roles extends Model
      */
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'role_id');
     }
 }

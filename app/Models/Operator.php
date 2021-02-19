@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\Admin;
-use App\Models\OperatorD;
+use App\Models\TingkatOperator;
+use App\Models\KirimanSuratOperator;
 
-class OperatorW extends Model
+class Operator extends Model
 {
     use HasFactory;
 
+    protected $table = "operator";
+
     protected $fillable = [
         'user_id',
-        'admin_id',
         'name',
     ];
 
@@ -27,13 +28,13 @@ class OperatorW extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function admin()
+    public function tingkatOperator()
     {
-        return $this->belongsTo(Admin::class, 'admin_id');
+        return $this->hasOne(TingkatOperator::class, 'operator_id');
     }
 
-    public function operator_d()
+    public function kirimanSuratOperator()
     {
-        return $this->hasMany(OperatorD::class, 'operator_w_id');
+        return $this->hasMany(KirimanSuratOperator::class, 'operator_id');
     }
 }

@@ -6,6 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Role;
+use App\Models\Admin;
+use App\Models\Operator;
+use App\Models\Anggota;
 
 class User extends Authenticatable
 {
@@ -48,7 +52,7 @@ class User extends Authenticatable
      */
     public function role()
     {
-        return $this->belongsTo(Roles::class, 'role_id');
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
     public function admin()
@@ -56,14 +60,13 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class, 'user_id');
     }
 
-    public function operator_w()
+    public function operator()
     {
-        return $this->hasOne(OperatorW::class, 'user_id');
+        return $this->hasOne(Operator::class, 'user_id');
     }
 
-    public function operator_d()
+    public function anggota()
     {
-        return $this->hasOne(OperatorD::class, 'user_id');
+        return $this->hasOne(Anggota::class, 'user_id');
     }
-
 }

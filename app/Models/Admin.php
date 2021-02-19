@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\OperatorW;
 
 class Admin extends Model
 {
     use HasFactory;
+
+    protected $table = "admin";
 
     protected $fillable = [
         'user_id',
@@ -23,10 +24,5 @@ class Admin extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function operator_w()
-    {
-        return $this->hasMany(OperatorW::class, 'admin_id');
     }
 }

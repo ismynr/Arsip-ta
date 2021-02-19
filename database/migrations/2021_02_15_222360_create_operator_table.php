@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOperatorWTable extends Migration
+class CreateOperatorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateOperatorWTable extends Migration
      */
     public function up()
     {
-        Schema::create('operator_w', function (Blueprint $table) {
-            $table->id();
+        Schema::create('operator', function (Blueprint $table) {
+            $table->smallIncrements('id');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('admin_id')->constrained('admin');
             $table->string('name', 50);
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ class CreateOperatorWTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operator_w');
+        Schema::dropIfExists('operator');
     }
 }
