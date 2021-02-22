@@ -1,37 +1,48 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo width="82" />
-            </a>
-        </x-slot>
-
-        <div class="card-body">
-            <div class="mb-4 text-sm text-muted">
-                {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
-            </div>
-
-            <!-- Validation Errors -->
-            <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-            <form method="POST" action="{{ route('password.confirm') }}">
-            @csrf
-
-            <!-- Password -->
-            <div class="form-group">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <div class="d-flex justify-content-end mt-4">
-                <x-button class="ml-4">
-                    {{ __('Confirm') }}
-                </x-button>
-            </div>
-        </form>
+    <x-slot name="title">
+        Konfirmasi Password
+    </x-slot>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="login-brand">
+            <img src="{{ asset('img/logo.svg') }}" alt="logo" width="120" class="shadow-light rounded-circle">
+          </div>
         </div>
-    </x-auth-card>
+        <div class="col-md-8">
+          <div class="card card-primary">
+            <div class="card-header text-center px-5">
+                {{__ ('Ini adalah area aman dari aplikasi. Harap konfirmasi kata sandi Anda sebelum melanjutkan.')}}
+            </div>
+
+            <div class="card-body">
+                <!-- Session Status -->
+                <x-auth-session-status class="mb-3" :status="session('status')" />
+
+                <!-- Validation Errors -->
+                <x-auth-validation-errors class="mb-3" :errors="$errors" />
+
+                <form method="POST" action="{{ route('password.confirm') }}">
+                    @csrf
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password">
+                        <div class="invalid-feedback">
+                          Please fill in your email
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                          {{ __('Confirm') }}
+                        </button>
+                      </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </x-guest-layout>

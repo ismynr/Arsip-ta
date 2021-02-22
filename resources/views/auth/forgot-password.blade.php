@@ -1,16 +1,20 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo width="82" />
-            </a>
-        </x-slot>
-
-        <div class="card-body">
-            <div class="mb-4">
-                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <x-slot name="title">
+        Reset Password
+    </x-slot>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="login-brand">
+            <img src="{{ asset('img/logo.svg') }}" alt="logo" width="120" class="shadow-light rounded-circle">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card card-primary">
+            <div class="card-header text-center px-5">
+                {{ __('Lupa kata sandi Anda? Tidak masalah. Beri tahu kami alamat email Anda dan kami akan mengirimkan email berisi tautan pengaturan ulang kata sandi yang memungkinkan Anda memilih sandi yang baru.') }}
             </div>
-
             <div class="card-body">
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-3" :status="session('status')" />
@@ -21,20 +25,23 @@
                 <form method="POST" action="{{ route('password.email') }}">
                 @csrf
 
-                <!-- Email Address -->
                     <div class="form-group">
-                        <x-label for="email" :value="__('Email')" />
+                      <label for="email">Email</label>
+                      <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                      <div class="invalid-feedback">
+                        Please fill in your email
+                      </div>
+                  </div>
 
-                        <x-input id="email" type="email" name="email" :value="old('email')" required autofocus />
-                    </div>
-
-                    <div class="d-flex justify-content-end mt-4">
-                        <x-button>
-                            {{ __('Email Password Reset Link') }}
-                        </x-button>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                        {{ __('Kirim Link Reset Password') }}
+                      </button>
                     </div>
                 </form>
             </div>
+          </div>
         </div>
-    </x-auth-card>
+      </div>
+    </div>
 </x-guest-layout>

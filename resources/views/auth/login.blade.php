@@ -1,62 +1,76 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo width="82" />
-            </a>
-        </x-slot>
+  <x-slot name="title">
+      Area Login
+  </x-slot>
 
-        <div class="card-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="login-brand">
+          <img src="{{ asset('img/logo.svg') }}" alt="logo" width="120" class="shadow-light rounded-circle">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card card-primary">
+          <div class="card-header text-center px-5">
+            Sebelum memulai, anda harus login terlebih dauhulu atau mendaftar sebagai anggota jika anda belum memiliki akun
+          </div>
+          <div class="card-body">
             <!-- Session Status -->
             <x-auth-session-status class="mb-3" :status="session('status')" />
 
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-3" :errors="$errors" />
 
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
+            <form form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+              @csrf
 
-                <!-- Email Address -->
-                <div class="form-group">
-                    <x-label for="email" :value="__('Email')" />
-
-                    <x-input id="email" type="email" name="email" :value="old('email')" required autofocus />
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" tabindex="1" required autofocus>
+                <div class="invalid-feedback">
+                  Please fill in your email
                 </div>
+              </div>
 
-                <!-- Password -->
-                <div class="form-group">
-                    <x-label for="password" :value="__('Password')" />
-
-                    <x-input id="password" type="password"
-                             name="password"
-                             required autocomplete="current-password" />
+              <div class="form-group">
+                <div class="d-block">
+                  <label for="password" class="control-label">Password</label>
+                  <div class="float-right">
+                    @if (Route::has('password.request'))
+                      <a href="{{ route('password.request') }}" class="text-small">
+                        {{ __('Lupa Kata Sandi?') }}
+                      </a>
+                    @endif
+                  </div>
                 </div>
-
-                <!-- Remember Me -->
-                <div class="form-group">
-                    <div class="form-check">
-                        <x-checkbox id="remember_me" name="remember" />
-
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
+                <input id="password" type="password" class="form-control" name="password" autocomplete="current-password" tabindex="2" required>
+                <div class="invalid-feedback">
+                  please fill in your password
                 </div>
+              </div>
 
-                <div class="mb-0">
-                    <div class="d-flex justify-content-end align-items-baseline">
-                        @if (Route::has('password.request'))
-                            <a class="text-muted mr-3" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
-                            </a>
-                        @endif
-
-                        <x-button>
-                            {{ __('Login') }}
-                        </x-button>
-                    </div>
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember_me">
+                  <label class="custom-control-label" for="remember_me">{{ __('Ingat Saya') }}</label>
                 </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                  {{ __('Login') }}
+                </button>
+              </div>
             </form>
+
+            <div class="mt-4 text-center">
+              Belum terdaftar sebagai anggota ? <br>
+              Daftar sekarang <a href="/register">Klik disini</a>
+            </div>
+          </div>
         </div>
-    </x-auth-card>
+      </div>
+    </div>
+  </div>
 </x-guest-layout>
