@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::name('admin.')->prefix('admin')->middleware(['auth', 'role:Admin', 'verified'])->group(function(){
+    Route::get('/dashboard', function () {
+        dd(Auth::user()->role->role_name, "ini admin");
+    })->name('dashboard');
+});
+
+Route::name('opwil.')->prefix('opwil')->middleware(['auth', 'role:OperatorWilayah', 'verified'])->group(function(){
+    Route::get('/dashboard', function () {
+        dd(Auth::user()->role->role_name, "ini operator wilayah");
+    })->name('dashboard');
+});
+
+Route::name('opdar.')->prefix('opdar')->middleware(['auth', 'role:OperatorDaerah', 'verified'])->group(function(){
+    Route::get('/dashboard', function () {
+        dd(Auth::user()->role->role_name, "ini operator daerah");
+    })->name('dashboard');
+});
+
+Route::name('anggota.')->prefix('anggota')->middleware(['auth', 'role:Anggota', 'verified'])->group(function(){
+    Route::get('/dashboard', function () {
+        dd(Auth::user()->role->role_name, "ini anggota");
+    })->name('dashboard');
+});
+
+Route::get('/hi', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 require __DIR__.'/auth.php';

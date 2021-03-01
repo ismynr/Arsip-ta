@@ -69,4 +69,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Anggota::class, 'user_id');
     }
+
+    public function hasRole($role)
+    {
+      if ($this->role()->where('role_name', $role)->first()) {
+        return true;
+      }
+      return false;
+    }
 }
