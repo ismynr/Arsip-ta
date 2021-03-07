@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ $title }} - {{ Auth::user()->myRole() }}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ asset('stisla/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('stisla/css/components.css') }}">
+</head>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<body>
+    <div id="app">
+        <div class="main-wrapper">
+            <div class="navbar-bg"></div>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased bg-light">
-        @include('layouts.app.navigation')
+            <!-- ======= Navbar ======= -->
+            @include('layouts.app.navigation')
 
-        <!-- Page Heading -->
-        <header class="d-flex py-3 bg-white shadow-sm border-bottom">
-            <div class="container">
-                {{ $header }}
+            <!-- ======= Sidebar ======= -->
+            @include('layouts.app.sidebar')
+
+            <!-- ======= Main ======= -->
+            <div class="main-content">
+                <section class="section">
+                <div class="section-header">
+                    <h1> {{ $title }} </h1>
+                </div>
+
+                {{ $slot }}
+                </section>
             </div>
-        </header>
 
-        <!-- Page Content -->
-        <main class="container my-5">
-            {{ $slot }}
-        </main>
-    </body>
+            <!-- ======= Main ======= -->
+            @include('layouts.app.footer')
+        </div>
+    </div>
+
+  <!-- JS Scripts -->
+  <script src="{{ asset('stisla/js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ asset('stisla/js/popper.min.js') }}"></script>
+  <script src="{{ asset('stisla/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('stisla/js/jquery.nicescroll.min.js') }}"></script>
+  <script src="{{ asset('stisla/js/moment.min.js') }}"></script>
+  <script src="{{ asset('stisla/js/stisla.js') }}"></script>
+  <script src="{{ asset('stisla/js/scripts.js') }}"></script>
+</body>
 </html>

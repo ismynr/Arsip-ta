@@ -1590,3 +1590,13 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+.auth-logo {
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .auth-logo {
+    width: 150px;
+  }
+}

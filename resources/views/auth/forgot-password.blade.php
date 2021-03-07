@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="login-brand">
-            <img src="{{ asset('img/logo.svg') }}" alt="logo" width="120" class="shadow-light rounded-circle">
+            <img src="{{ asset('img/logo.svg') }}" alt="logo" class="auth-logo shadow-light rounded-circle">
           </div>
         </div>
         <div class="col-md-8">

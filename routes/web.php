@@ -1,49 +1,49 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AnggotaDashboardController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OpdarDashboardController;
+use App\Http\Controllers\OpwilDashboardController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+/**
+ * Home Route
+ * 
+ */
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::name('admin.')->prefix('admin')->middleware(['auth', 'role:Admin', 'verified'])->group(function(){
-    Route::get('/dashboard', function () {
-        dd(Auth::user()->role->role_name, "ini admin");
-    })->name('dashboard');
-});
+/**
+ * Auth Route
+ * 
+ */
+Route::middleware('auth', 'verified')->group(function() {
 
-Route::name('opwil.')->prefix('opwil')->middleware(['auth', 'role:OperatorWilayah', 'verified'])->group(function(){
-    Route::get('/dashboard', function () {
-        dd(Auth::user()->role->role_name, "ini operator wilayah");
-    })->name('dashboard');
-});
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::name('opdar.')->prefix('opdar')->middleware(['auth', 'role:OperatorDaerah', 'verified'])->group(function(){
-    Route::get('/dashboard', function () {
-        dd(Auth::user()->role->role_name, "ini operator daerah");
-    })->name('dashboard');
-});
+    // Admin Role
+    Route::name('admin.')->prefix('admin')->middleware(['role:Admin'])->group(function(){
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    });
+    
+    // Operator Wilayah Role
+    Route::name('opwil.')->prefix('opwil')->middleware(['role:OperatorWilayah'])->group(function(){
+        Route::get('/', [OpwilDashboardController::class, 'index'])->name('dashboard');
+        
+    });
+    
+    // Operator Daerah Role
+    Route::name('opdar.')->prefix('opdar')->middleware(['role:OperatorDaerah'])->group(function(){
+        Route::get('/', [OpdarDashboardController::class, 'index'])->name('dashboard');
+    });
+    
+    // Operator Anggota Role
+    Route::name('anggota.')->prefix('anggota')->middleware(['role:Anggota'])->group(function(){
+        Route::get('/', [AnggotaDashboardController::class, 'index'])->name('dashboard');
+    });
 
-Route::name('anggota.')->prefix('anggota')->middleware(['auth', 'role:Anggota', 'verified'])->group(function(){
-    Route::get('/dashboard', function () {
-        dd(Auth::user()->role->role_name, "ini anggota");
-    })->name('dashboard');
 });
-
-Route::get('/hi', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 require __DIR__.'/auth.php';

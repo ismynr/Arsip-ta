@@ -10,8 +10,9 @@ use App\Models\Role;
 use App\Models\Admin;
 use App\Models\Operator;
 use App\Models\Anggota;
+use Illuminate\Support\Facades\Auth;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -25,6 +26,12 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'logged_at',
     ];
 
     /**
@@ -69,6 +76,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(Anggota::class, 'user_id');
     }
+    
+    /**
+     * Role Checker
+     * 
+     */
+    public function myRole()
+    {
+        return $this->role->role_name;
+    }
 
     public function hasRole($role)
     {
@@ -76,5 +92,19 @@ class User extends Authenticatable
         return true;
       }
       return false;
+    }
+
+    public function myName()
+    {
+        if($this->hasRole('Admin')){
+            return Auth::user()->admin->name;
+
+        }else if($this->hasRole('OperatorWilayah') || ($this->hasRole('OperatorDaerah'))){
+            return Auth::user()->operator->name;
+
+        }else if($this->hasRole('Anggota')){
+            return Auth::user()->anggota->nama;
+
+        }
     }
 }

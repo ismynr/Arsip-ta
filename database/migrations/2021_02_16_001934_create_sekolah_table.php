@@ -17,7 +17,7 @@ class CreateSekolahTable extends Migration
             $table->integerIncrements('id');
             $table->char('npsn', 8)->unique();
             $table->string('nama_sekolah', 60);
-            $table->enum('status_sekolah', ['Negeri', 'Swasta']);
+            $table->char('status_sekolah', 1);
             $table->unsignedTinyInteger('jenjang_id');
             $table->string('notelp', 15)->unique();
             $table->string('alamat', 100);
@@ -26,6 +26,7 @@ class CreateSekolahTable extends Migration
             $table->char('provinsi_id', 2);
             $table->timestamps();
 
+            $table->foreign('status_sekolah')->references('id')->on('status_sekolah');
             $table->foreign('jenjang_id')->references('id')->on('jenjang_pendidikan');
             $table->foreign('kecamatan_id')->references('id')->on('wilayah_kecamatan');
             $table->foreign('kabupaten_id')->references('id')->on('wilayah_kabupaten');
