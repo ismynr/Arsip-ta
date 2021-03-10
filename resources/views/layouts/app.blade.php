@@ -12,9 +12,9 @@
 
   <!-- CSS Files -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="{{ asset('stisla/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('stisla/css/components.css') }}">
+  <link rel="stylesheet" href="{{ asset('tempelate/stisla/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('tempelate/stisla/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('tempelate/stisla/css/components.css') }}">
 </head>
 
 <body>
@@ -45,12 +45,12 @@
     </div>
 
   <!-- JS Scripts -->
-  <script src="{{ asset('stisla/js/jquery-3.3.1.min.js') }}"></script>
-  <script src="{{ asset('stisla/js/popper.min.js') }}"></script>
-  <script src="{{ asset('stisla/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('stisla/js/jquery.nicescroll.min.js') }}"></script>
-  <script src="{{ asset('stisla/js/moment.min.js') }}"></script>
-  <script src="{{ asset('stisla/js/stisla.js') }}"></script>
-  <script src="{{ asset('stisla/js/scripts.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/popper.min.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/jquery.nicescroll.min.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/moment.min.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/stisla.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/scripts.js') }}"></script>
 </body>
 </html>

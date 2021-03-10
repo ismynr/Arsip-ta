@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,11 +11,13 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <link href="assets/img/favicon.png" rel="icon">
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="{{ asset('stisla/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('selecao/css/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('tempelate/stisla/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('tempelate/stisla/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('tempelate/selecao/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -54,10 +57,10 @@
   @include('layouts.guest.footer')
 
   <!-- JS Scripts -->
-  <script src="{{ asset('stisla/js/jquery-3.3.1.min.js') }}"></script>
-  <script src="{{ asset('stisla/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('stisla/js/scripts.js') }}"></script>
-  <script src="{{ asset('selecao/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
-  <script src="{{ asset('selecao/js/main.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/scripts.js') }}"></script>
+  <script src="{{ asset('tempelate/selecao/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('tempelate/selecao/js/main.js') }}"></script>
 </body>
 </html>

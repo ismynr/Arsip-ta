@@ -75,7 +75,7 @@
     @auth
       <li class="dropdown">
         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-          <img alt="image" src="{{ asset('img/default-avatar.png') }}" class="rounded-circle mr-1">
+          <img alt="image" src="{{ asset('tempelate/img/default-avatar.png') }}" class="rounded-circle mr-1">
           <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->myName() }}</div>
         </a>
 

@@ -13,20 +13,15 @@
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
 
-  <!-- Awesome Fonts -->
+  <!-- CSS Files -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-  <!-- Vendor CSS Files -->
-  <link rel="stylesheet" href="{{ asset('stisla/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('selecao/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('selecao/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="{{ asset('selecao/css/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('tempelate/stisla/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('tempelate/selecao/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('tempelate/selecao/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('tempelate/selecao/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
     <div class="container d-flex align-items-center">
@@ -35,23 +30,7 @@
         <h1 class="text-light"><a href="/">PGSI</a></h1>
       </div>
 
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Sejarah</a></li>
-          <li><a href="#">Program Kerja</a></li>
-          <li><a href="#">Visi & Misi</a></li>
-          <li class="active">
-            @guest
-              <a href="/login">Login</a>
-            @endguest
-            @auth
-              <a href="/dashboard">Dashboard</a>
-            @endauth
-          </li>
-
-        </ul>
-      </nav><!-- .nav-menu -->
+      @include('layouts.guest.navigation')
 
     </div>
   </header><!-- End Header -->
@@ -64,7 +43,7 @@
       <div class="carousel-item active">
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown mb-2">Persatuan Guru Seluruh Indonesia</h2>
-            <img src="{{ asset('img/logo.svg') }}" alt="Logo PGSI" class="animate__animated animate__fadeInUp img-fluid mb-3" style="width: 110px">
+            <img src="{{ asset('tempelate/img/logo.svg') }}" alt="Logo PGSI" class="animate__animated animate__fadeInUp img-fluid mb-3" style="width: 110px">
             <p class="animate__animated fanimate__adeInUp">PGSI adalah organisasi profesi guru yang bersifat terbuka, independen, dan non Partai politik dengan prinsip solidaritas profesi guru di Indonesia dan di dunia, organisasi Persatuan Guru Seluruh Indonesia disingkat PGSI dideklarasikan pada tanggal 7 Juli 2011 di Jakarta</p>
           <a href="/register" class="btn-get-started animate__animated animate__fadeInUp scrollto">Daftar Anggota</a>
         </div>
@@ -133,7 +112,7 @@
 
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-8">
-            <img src="{{ asset('img/img1.jpg') }}" alt="" class="img-fluid">
+            <img src="{{ asset('tempelate/img/img1.jpg') }}" alt="" class="img-fluid">
           </div>
           <div class="col-lg-4 pt-2 pt-lg-0">
             <p>
@@ -338,34 +317,16 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="social-links">
-        <a href="https://web.facebook.com/PersatuanGuruSwastaSeluruhIndonesia" 
-            class="facebook"><i class="fab fa-facebook-f"></i></a> Facebook
-        <a href="https://api.whatsapp.com/send?phone=6285642667375" 
-            class="whatsapp ml-2"><i class="fab fa-whatsapp"></i></a> Whatsapp
-        <a href="#" 
-            class="telegram ml-2"><i class="fab fa-telegram-plane"></i></a> Telegram
-      </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>Selecao</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits"></div>
-    </div>
-  </footer><!-- End Footer -->
+  @include('layouts.guest.footer')
 
   <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('stisla/js/jquery-3.3.1.min.js') }}"></script>
-  <script src="{{ asset('stisla/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('selecao/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
-  <script src="{{ asset('selecao/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{ asset('selecao/js/main.js') }}"></script>
+  <!-- JS Files -->
+  <script src="{{ asset('tempelate/stisla/js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ asset('tempelate/stisla/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('tempelate/selecao/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('tempelate/selecao/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('tempelate/selecao/js/main.js') }}"></script>
 
 </body>
 
