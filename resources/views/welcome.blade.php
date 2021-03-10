@@ -45,7 +45,7 @@
           <h2 class="animate__animated animate__fadeInDown mb-2">Persatuan Guru Seluruh Indonesia</h2>
             <img src="{{ asset('tempelate/img/logo.svg') }}" alt="Logo PGSI" class="animate__animated animate__fadeInUp img-fluid mb-3" style="width: 110px">
             <p class="animate__animated fanimate__adeInUp">PGSI adalah organisasi profesi guru yang bersifat terbuka, independen, dan non Partai politik dengan prinsip solidaritas profesi guru di Indonesia dan di dunia, organisasi Persatuan Guru Seluruh Indonesia disingkat PGSI dideklarasikan pada tanggal 7 Juli 2011 di Jakarta</p>
-          <a href="/register" class="btn-get-started animate__animated animate__fadeInUp scrollto">Daftar Anggota</a>
+          <a href="/pendaftaran" class="btn-get-started animate__animated animate__fadeInUp scrollto">Daftar Anggota</a>
         </div>
       </div>
 

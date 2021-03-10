@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="{{ asset('tempelate/stisla/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('tempelate/stisla/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('tempelate/selecao/css/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 
 <body>

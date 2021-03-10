@@ -66,7 +66,7 @@
 
             <div class="mt-4 text-center">
               Belum terdaftar sebagai anggota ? <br>
-              Daftar sekarang <a href="/register">Klik disini</a>
+              Daftar sekarang <a href="/pendaftaran">Klik disini</a>
             </div>
           </div>
         </div>

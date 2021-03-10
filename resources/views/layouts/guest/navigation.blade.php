@@ -10,10 +10,10 @@
                 <a href="/login">Dashboard</a>
             @endauth
             @guest
-                @if (\Request::segment(1) == 'register')
+                @if (\Request::segment(1) == 'pendaftaran' || \Request::segment(1) == null)
                     <a href="/login">Login</a>
                 @else
-                    <a href="/register">Daftar</a>
+                    <a href="/pendaftaran">Daftar</a>
                 @endif
             @endguest
         </li>

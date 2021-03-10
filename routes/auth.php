@@ -10,9 +10,13 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/register', [RegisteredUserController::class, 'create'])
+// Route::get('/register', [RegisteredUserController::class, 'create'])
+//                 ->middleware('guest')
+//                 ->name('register');
+
+Route::get('/pendaftaran', [RegisteredUserController::class, 'index'])
                 ->middleware('guest')
-                ->name('register');
+                ->name('pendaftaran');
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
